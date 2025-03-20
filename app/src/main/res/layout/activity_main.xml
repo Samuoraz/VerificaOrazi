@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/ed_BudIniziale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="110dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bt_Budget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="140dp"
+        android:text="Imposta budget"
+        android:backgroundTint="@color/blue"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_BudIniziale" />
+
+    <Button
+        android:id="@+id/bt_Cibo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cibo"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.175" />
+
+    <Button
+        android:id="@+id/bt_Tras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trasporti"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bt_Ricavo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/bt_Cibo"
+        app:layout_constraintTop_toBottomOf="@+id/bt_Budget"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <Button
+        android:id="@+id/bt_Ricavo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Ricavo"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bt_Altro"
+        app:layout_constraintTop_toBottomOf="@+id/bt_Budget"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <EditText
+        android:id="@+id/ed_Desc"
+        android:layout_width="385dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="72dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Descrizione"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_Budget" />
+
+    <Button
+        android:id="@+id/bt_Invia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invia"
+        android:backgroundTint="@color/blue"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_Importo"
+        app:layout_constraintVertical_bias="0.027" />
+
+    <Button
+        android:id="@+id/bt_Altro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:text="Altro"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.175" />
+
+    <EditText
+        android:id="@+id/ed_Importo"
+        android:layout_width="386dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_Desc" />
+
+    <TextView
+        android:id="@+id/TV_generale"
+        android:layout_width="399dp"
+        android:layout_height="361dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_Invia" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
