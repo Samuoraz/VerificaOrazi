@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +43,19 @@ public class MainActivity extends AppCompatActivity {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+
+            ed_Desc.setVisibility(View.GONE);
+            ed_Importo.setVisibility(View.GONE);
+            bt_Invia.setVisibility(View.GONE);
+
+            bt_Budget.setEnabled(true);
+
+            //Tiene i pulsanti disabilitati
+            bt_Cibo.setEnabled(false);
+            bt_Tras.setEnabled(false);
+            bt_Ricavo.setEnabled(false);
+            bt_Altro.setEnabled(false);
+
             return insets;
         });
 
@@ -69,31 +83,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if(!BottoneCliccato){
-                    BottoneCliccato = true;
-
-                    bt_Budget.setEnabled(true);
-
-                    //Tiene i pulsanti disabilitati
-                    bt_Cibo.setEnabled(false);
-                    bt_Tras.setEnabled(false);
-                    bt_Ricavo.setEnabled(false);
-                    bt_Altro.setEnabled(false);
-
-                    budget = ImpostaBudget();
-
-                }
-                else if(BottoneCliccato){
-                    // Disabilita il pulsante
-                    bt_Budget.setEnabled(false);
-
-                    //Abilita i pulsanti
-                    bt_Cibo.setEnabled(true);
-                    bt_Tras.setEnabled(true);
-                    bt_Ricavo.setEnabled(true);
-                    bt_Altro.setEnabled(true);
-                }
-
+                budget = ImpostaBudget();
+                bt_Budget.setEnabled(false);
+                bt_Cibo.setEnabled(true);
+                bt_Tras.setEnabled(true);
+                bt_Ricavo.setEnabled(true);
+                bt_Altro.setEnabled(true);
+                SettaDati(budget);
             }
         });
 
@@ -192,13 +188,24 @@ public class MainActivity extends AppCompatActivity {
     public void InviaDati(int budget, int sottC, int sottT, int sottA, int agg){
         int totfinale = budget - sottC - sottT - sottA + agg;
 
-        String desc =
-        "Budget Iniziale: " + budget + "/n" + "Tot Spese e Ricavi:" +
-        "/n" + "Cibo: " + sottC + "/n" + "Tras: " + sottT + "/n" + "Ricavo: " + agg + "/n" + "Altro: " + sottA +
-        "/n" + "Totale finale: " + totfinale;
+        int PercentoC = (sottC * 100) / budget;
+        int PercentoT = (sottT * 100) / budget;
+        int PercentoA = (sottA * 100) / budget;
+        int PercentoR = (agg * 100) / budget;
 
+        if(totfinale < 0){
+            Toast.makeText(this, "Il budget non può essere minore di 0!", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            String desc = "Budget Iniziale: " + budget + "\n" + "Tot Spese e Ricavi:" + "\n" + "Cibo: " + sottC  + PercentoC + "\n" + "Tras: " + sottT +  PercentoT + "\n" + "Ricavo: " + agg + PercentoR + "\n" + "Altro: " + sottA + PercentoA + "\n" + "Totale finale: " + totfinale;
+            TV_generale.setText(desc);
+        }
+
+
+    }
+    public void SettaDati(int budget){
+        String desc = "Budget Iniziale: " + "budget" + "\n" + "Tot Spese e Ricavi:" + "\n" + "Cibo: " + "0" + "\n" + "Tras: " + "0" + "\n" + "Ricavo: " + "0" + "\n" + "Altro: " + "0" + "\n" + "Totale finale: " + "0";
         TV_generale.setText(desc);
-
     }
 
 
